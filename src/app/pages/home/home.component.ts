@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
     });
     this.moviesService.getMovies('top_rated').subscribe((movies) => {
       this.topRatedMovies = movies;
-      console.log('this.movies', this.popularMovies);
     });
     this.moviesService.getMovies('upcoming').subscribe((movies) => {
       this.upcomingMovies = movies;

@@ -52,3 +52,8 @@ export interface MovieCredits {
     profile_path: string;
   }[];
 }
+
+export interface GenresDto {
+  id:string,
+  name:string
+}

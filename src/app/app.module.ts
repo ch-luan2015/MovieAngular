@@ -18,6 +18,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { VideoEmbedComponent } from './components/video-embed/video-embed.component';
 import { ImageModule } from 'primeng/image';
 import {CarouselModule} from 'primeng/carousel';
+import { GenresComponent } from './pages/genres/genres.component';
 
 BrowserAnimationsModule;
 
@@ -32,7 +33,8 @@ BrowserAnimationsModule;
     ItemsBannerComponent,
     ItemComponent,
     MovieComponent,
-    VideoEmbedComponent
+    VideoEmbedComponent,
+    GenresComponent
   ],
   imports: [
     BrowserModule,
