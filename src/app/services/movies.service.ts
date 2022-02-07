@@ -63,4 +63,15 @@ export class MoviesService {
       })
     );
   }
+  getMoviesByGenre(genreId: string, page: number) {
+    return this.http
+      .get<MovideDto>(
+        `${this.baseUrl}/discover/movie?with_genres=${genreId}&page=${page}&api_key=${this.apiKey}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.results.splice(0, 12)); // genresDto chua 1 cai mang genre
+        })
+      );
+  }
 }
