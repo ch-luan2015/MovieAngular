@@ -26,8 +26,8 @@ export class MoviesComponent implements OnInit {
     this.getPagedMovies(1);
   }
 
-  getPagedMovies = (page: number) => {
-    this.moviesService.searchMovies(page).subscribe((movies) => {
+  getPagedMovies = (page: number, searchKeyword?: string) => {
+    this.moviesService.searchMovies(page, searchKeyword).subscribe((movies) => {
       this.movies = movies;
     });
   };
@@ -42,10 +42,14 @@ export class MoviesComponent implements OnInit {
     if (this.genreId) {
       this.getMoviesByGenreId(this.genreId, pageNumber);
     } else {
-      this.getPagedMovies(pageNumber);
+      if (this.searchValue) {
+        this.getPagedMovies(pageNumber, this.searchValue);
+      }
     }
   }
   searchChanged() {
-    console.log('searchChanged', this.searchValue);
+    if (this.searchValue) {
+      this.getPagedMovies(1, this.searchValue);
+    }
   }
 }

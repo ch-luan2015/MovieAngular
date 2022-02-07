@@ -22,9 +22,12 @@ export class MoviesService {
     );
   }
 
-  searchMovies(page: number) {
+  searchMovies(page: number, searchValue?: string) {
+    const url = searchValue ? 'search/movie' : 'movie/popular';
     return this.http
-      .get<MovideDto>(`${this.baseUrl}/movie/popular?page=${page}&api_key=${this.apiKey}`)
+      .get<MovideDto>(
+        `${this.baseUrl}/${url}?page=${page}&query=${searchValue}&api_key=${this.apiKey}`
+      )
       .pipe(
         switchMap((res) => {
           return of(res.results);
