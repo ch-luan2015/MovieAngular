@@ -5,6 +5,7 @@ import { GenresDto } from '../models/genre';
 
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { TvDto } from '../models/tv';
 
 @Injectable({
   providedIn: 'root'
@@ -76,5 +77,13 @@ export class MoviesService {
           return of(res.results.splice(0, 12)); // genresDto chua 1 cai mang genre
         })
       );
+  }
+
+  getTvs(type: string = 'latest', count: number = 12) {
+    return this.http.get<TvDto>(`${this.baseUrl}/tv/${type}?api_key=${this.apiKey}`).pipe(
+      switchMap((res) => {
+        return of(res.results.slice(0, count));
+      })
+    );
   }
 }
